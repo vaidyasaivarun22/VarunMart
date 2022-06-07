@@ -135,6 +135,7 @@ export class ProductDetailsComponent {
         if(res.message==="Product Removed successfully")
         {
           alert("Product Removed from cart Successfully");
+          this.usObj.updateDataObservable(res.latestCartObject);
         }      
         else{
           alert(res.message);

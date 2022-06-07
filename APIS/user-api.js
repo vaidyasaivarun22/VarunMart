@@ -209,7 +209,9 @@ userApi.put('/deleteproduct/:productid/',ExpressErrorHandler(async(req,res)=>{
     if(userExist !==  null)
     {
        await userCartCollectionObject.updateOne({username:userCartObj.username},{$pull:{products:{"_id":pid}}});
-       res.send("Product Removed successfully");
+       // sending latest cartObjects
+       let latestCartObject = await userCartCollectionObject.findOne({username:userCartObj.username});
+       res.send({message:"Product Removed successfully",latestCartObject:latestCartObject});
     }
     else
     {
