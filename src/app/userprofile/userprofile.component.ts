@@ -94,7 +94,9 @@ export class UserprofileComponent implements OnInit {
       res=>{
         if(res.message==="Product Removed successfully")
         {
+          this.usObj.updateDataObservable(res.latestCartObject);
           alert("Product Removed from cart Successfully");
+          this.router.navigateByUrl('products');
         }      
         else{
           alert(res.message);
