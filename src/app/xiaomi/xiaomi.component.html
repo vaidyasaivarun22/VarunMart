@@ -1,0 +1,12 @@
+<div class="container">
+    <input type="text" name="productTitle" placeholder="Enter xiaomi model to search" class="form-control" mt-5 [(ngModel)]="searchTerm">
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 m-5">
+    <div class="col" *ngFor="let probj of xiaomi | search:searchTerm | paginate:{itemsPerPage : 9,currentPage:p}">
+        <app-product-details [productobj]=probj></app-product-details>
+    </div>
+</div>
+<div class="container text-center">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
+

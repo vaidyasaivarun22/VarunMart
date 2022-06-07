@@ -1,0 +1,31 @@
+<h3 class="text-center">Add New Xiaomi Mobile Details To Add To Existing Collection</h3>
+
+<div class="row mt-3">
+    <div class="col-sm-2 col-md-3"></div>
+        <div class="col-sm-8 col-md-6">
+            <form (ngSubmit)="onSubmitNewXiaomi()">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="pt" placeholder="jhonsen@gmail.com" name="productTitle" [(ngModel)]="newObj.productTitle">
+                    <label for="pt">Xiaomi Model</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="pi" placeholder="password" name="productImage" [(ngModel)]="newObj.productImage">
+                    <label for="pi">Image URL</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="pd" placeholder="password" name="description" [(ngModel)]="newObj.description">
+                    <label for="pd">Description</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="pk" placeholder="price of xiaomi" name="price" [(ngModel)]="newObj.price">
+                    <label for="pk">Price</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="pt" placeholder="available items count" name="available" [(ngModel)]="newObj.available">
+                    <label for="pt">Available Pieces</label>
+                </div>
+                <button class="btn btn-warning float-end"><i class="fa-solid fa-plus"></i> Add New Mobile</button>
+            </form>
+            </div>
+    <div class="col-sm-2 col-md-3"></div>
+</div>

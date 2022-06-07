@@ -1,0 +1,30 @@
+p,.extra{
+    margin-top: 100px;
+}
+li{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+}
+ul{
+    border-radius: 10px;
+    display:flexbox;
+}
+li a{
+    color:white;
+}
+
+li a:visited{
+    background-color: #F0AD4E;
+    background-color: #F0AD4E;
+    text-emphasis-color: black;
+}
+.active{
+    background-color: #F0AD4E;
+    color: black;
+    font-weight: bold;
+}
+a.nav-link.active{
+    background-color: #F0AD4E;
+}

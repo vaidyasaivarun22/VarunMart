@@ -1,0 +1,111 @@
+.extra{
+    margin-top: 100px;
+}
+
+
+/* main cart positioning for mobiles */
+@media only screen and (max-width:600px){
+    .cart
+    {
+        overflow: hidden;
+        position: fixed; 
+        z-index: 1;
+        top: 10px;
+        right:90px;
+        border-radius: 5px;
+        color:black;
+        margin-bottom: 1px;
+    }
+    .checkout{
+        margin-left: 230px;
+        border-radius: 5px;
+        color:black;
+        margin-bottom: 30px;
+    }
+    
+    .fa-trash-can{
+        color: crimson;
+        cursor: pointer;
+    }
+    .sad{
+        width: 0px;
+    }
+}
+/* for tablets */
+@media screen and (min-width:321px) and (max-width:768px)
+{
+    .cart
+    {
+        overflow: hidden;
+        position: fixed; 
+        z-index: 1;
+        top: 10px;
+        right:90px;
+        float: inline-start;
+        margin: auto;
+        border-radius: 5px;
+        color:black;
+        margin-bottom: 1px;
+    }
+    .checkout{
+        margin-left: 235px;
+        border-radius: 5px;
+        color:black;
+        margin-bottom: 30px;
+    }
+    
+    .fa-trash-can:hover{
+        color: crimson;
+        cursor: pointer;
+    }
+    .sad{
+        width: 0px;
+    }
+}
+/* for laptops */
+@media screen and (min-width:1000px){
+    .cart
+    {
+        float: inline-start;
+        margin: auto;
+        border-radius: 5px;
+        color:black;
+        margin-bottom: 1px;
+    } 
+    .checkout{
+        display: block;
+        margin: auto;
+        border-radius: 5px;
+        color:black;
+        margin-bottom: 30px;
+    }
+    
+    .fa-trash-can:hover{
+        color: crimson;
+        cursor: pointer;
+    }
+    .sad{
+        width: 700px;
+    }
+}
+
+table{
+    margin-right: 100px;
+}
+div{
+    margin-right: 100px;
+}
+.extra1{
+    margin:10px
+}
+thead th{
+    margin-bottom: 30px;
+}
+th{
+    margin-bottom: 20px;
+    color:#F0Ad4E;
+    font-weight: 900;
+}
+td{
+    margin-top: 20px;
+}

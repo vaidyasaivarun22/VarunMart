@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-warning mainCart" (click)="cartUpdate()" *ngIf="!dsObj.adminLoginStatus()">
+  <i class="fa-solid fa-cart-shopping"></i> <span class="badge badge-light">{{count}}</span>
+</button>
+<ul class="nav nav-tabs bg-dark justify-content-evenly mt-3 extra">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="iphones" routerLinkActive="active" >iphones</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="samsung" routerLinkActive="active">samsung</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="xiaomi" routerLinkActive="active">xiaomi</a>
+  </li>
+</ul>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Nest footer component -->
+<div class="fixposition">
+  <app-footer></app-footer>
+</div>

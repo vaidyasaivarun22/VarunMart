@@ -1,0 +1,66 @@
+.zoom {
+    border-radius: 10px;
+    transition: transform .2s; /* Animation */
+} 
+  
+.upan:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+} 
+
+a{
+  cursor: pointer;
+}
+
+
+/* for mobiles */
+  @media only screen and (max-width:600px){
+    /* card height and width */
+    .zoom{
+      height:490px;
+      width: 250px;
+      margin-right: 20px;
+    }
+    /* image height and width */
+    .prodimg{
+      height: 200px;
+    }
+    .extra{
+      margin-left: 15px;
+    } 
+  }
+  @media screen and (min-width:601px) and (max-width:768px)
+  {
+    .extra{
+      display: block;
+      margin: auto;
+      margin-top: 5px;
+    } 
+    .upan:hover{
+      display: flex;
+      text-align: center;
+    }
+  }
+  /* for laptops */
+  @media screen and (min-width:992px){
+    .zoom{
+      height: 510px;
+      width: 18rem;
+    }
+    .prodimg{
+      height: 250px;
+    }
+    .extra{
+      margin-left: 50px;
+    } 
+  }
+  .forlogin{
+      background-color: #F0AD4E;
+      color:black;
+      padding: 7px;
+  }
+
+  .ribbon-bookmark-v{
+    box-sizing: content-box;
+    background-color: crimson;
+    text-align: center;
+  }

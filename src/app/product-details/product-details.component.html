@@ -1,0 +1,20 @@
+
+  <div class="card bg-dark text-light zoom" data-aos="fade-down-right">
+    <a (click)="onSelectId(productobj)">
+      <img class="card-img-top prodimg" src={{productobj.productImage}} alt="Card image cap">
+    </a>
+      <div class="card-body">
+        <h5 class="card-title">{{productobj.productTitle}}</h5>
+        <p class="card-text">{{productobj.description}}</p>
+          <button class="btn btn-warning upan" style="text-align: center;" (click)="sendProductToParent(productobj);onProductSelect(productobj);checkLoginStatus();onAdd();" *ngIf="this.dsObj.adminLoginStatus()!==true" [disabled]="productobj.available == 0 || noMoreAdd"> Add To Cart</button>
+  
+          <button type="button" class="btn btn-md btn-warning extra" (click)="removeFromCart();removeProductFromCart(productobj)" *ngIf="this.dsObj.adminLoginStatus()!==true" [disabled]="noMoreRemove">
+            <img src="../../assets/cartMinus.png" width="30px" height="25px"> <span class="badge badge-light">{{count}}</span>
+          </button>
+          <button class="btn btn-warning" *ngIf="this.dsObj.adminLoginStatus()===true" (click)="redirectToModifyProduct()">
+            Modify Mobile data
+          </button>
+      </div>
+  </div>
+
+

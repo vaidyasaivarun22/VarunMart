@@ -1,0 +1,66 @@
+/* for mobile simple cart button */
+.mainCart:hover{
+    transform: scale(1.1); ;
+}
+
+/* main cart positioning for mobiles */
+@media only screen and (max-width:600px){
+    button{
+        overflow: hidden;
+        position: fixed; 
+        top: 10px; 
+        right: 80px;
+        z-index: 1;
+        border-radius: 10px;
+    }
+}
+/* for tablets */
+@media screen and (min-width:321px) and (max-width:768px)
+{
+    button{
+        overflow: hidden;
+        position: fixed; 
+        top: 10px; 
+        right: 80px;
+        z-index: 1;
+        border-radius: 10px;
+    }
+}
+/* for laptops */
+@media screen and (min-width:1000px){
+    button{
+        overflow: hidden;
+        position: fixed; 
+        top: 130px; 
+        right: 60px;
+        border-radius: 10px;
+    }  
+}
+
+
+li{
+    margin-top: 50px;
+    background-color: black;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+ }
+li a{
+    color:white;
+}
+li a:visited{
+    background-color: #FFC107;
+    text-emphasis-color: black;
+    font-weight: 800;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.active{
+    font-weight: bold;
+}
+
+.extra{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

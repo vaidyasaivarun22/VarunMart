@@ -1,0 +1,173 @@
+<div class="container mk">
+    <input type="text" name="productTitle" placeholder="Enter Any Mobile Model To Search" class="form-control" mt-5 [(ngModel)]="searchTerm">
+</div>
+<form #ref="ngForm" (ngSubmit)="onSaveIphone(ref.value)">
+    <button class="float-start">Iphones Data</button>
+    <table class="table text-center" width="100%">
+        <thead>
+            <th>Model</th>
+            <th>Avl.</th>
+            <th>Description</th>
+            <th>Image</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let iphone of iphones | search:searchTerm ;let ind = index" data-aos="fade-up">
+                <td>
+                    <span *ngIf="!editIphoneStatus || editIphoneIndex !== ind" style="padding-left: 20px;">
+                        {{iphone.productTitle}}
+                    </span>
+                    <span *ngIf="editIphoneStatus && editIphoneIndex == ind">
+                        <input type="text" name="productTitle" [(ngModel)]="editIphoneObj.productTitle">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editIphoneStatus || editIphoneIndex !== ind" style="padding-left: 20px;">
+                        {{iphone.available}}
+                    </span>
+                    <span *ngIf="editIphoneStatus && editIphoneIndex == ind">
+                        <input type="text" name="available" [(ngModel)]="editIphoneObj.available">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editIphoneStatus || editIphoneIndex !== ind">
+                        {{iphone.description}}
+                    </span>
+                    <span *ngIf="editIphoneStatus && editIphoneIndex == ind">
+                        <input type="text" name="description" [(ngModel)]="editIphoneObj.description">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editIphoneStatus || editIphoneIndex !== ind">
+                        <img src={{iphone.productImage}} width="200px" height="180px">
+                    </span>
+                    <span *ngIf="editIphoneStatus && editIphoneIndex == ind">
+                        <input type="text" name="productImage" [(ngModel)]="editIphoneObj.productImage">
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        <button class="btn btn-warning btn-sm" type="button" (click)="editIphone(iphone,ind)" *ngIf="!editIphoneStatus || editIphoneIndex !== ind"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-warning btn-sm" type="button" (click)="onDeleteIphone(iphone)" *ngIf="!editIphoneStatus || editIphoneIndex !== ind"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn btn-warning btn-sm" type="submit" *ngIf="editIphoneStatus && editIphoneIndex == ind"><i class="fa-solid fa-floppy-disk"></i></button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<form #ref="ngForm" (ngSubmit)="onSaveXiaomi(ref.value)">
+    <button class="float-start">Xiaomi Data</button>
+    <table class="table text-center">
+        <thead>
+            <th>Model</th>
+            <th>Avl.</th>
+            <th>Description</th>
+            <th>Image</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let mi of xiaomi| search:searchTerm;let ind = index" data-aos="fade-up">
+                <td>
+                    <span *ngIf="!editXiaomiStatus || editXiaomiIndex !== ind">
+                        {{mi.productTitle}}
+                    </span>
+                    <span *ngIf="editXiaomiStatus && editXiaomiIndex == ind">
+                        <input type="text" name="productTitle" [(ngModel)]="editXiaomiObj.productTitle">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editXiaomiStatus || editXiaomiIndex !== ind">
+                        {{mi.available}}
+                    </span>
+                    <span *ngIf="editXiaomiStatus && editXiaomiIndex == ind">
+                        <input type="text" name="available" [(ngModel)]="editXiaomiObj.available">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editXiaomiStatus || editXiaomiIndex !== ind">
+                        {{mi.description}}
+                    </span>
+                    <span *ngIf="editXiaomiStatus && editXiaomiIndex == ind">
+                        <input type="text" name="description" [(ngModel)]="editXiaomiObj.description">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editXiaomiStatus || editXiaomiIndex !== ind">
+                        <img src={{mi.productImage}} width="150">
+                    </span>
+                    <span *ngIf="editXiaomiStatus && editXiaomiIndex == ind">
+                        <input type="text" name="productImage" [(ngModel)]="editXiaomiObj.productImage">
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        <button class="btn btn-warning btn-sm" type="button" (click)="editXiaomi(mi,ind)" *ngIf="!editXiaomiStatus || editXiaomiIndex !== ind"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-warning btn-sm" type="button" (click)="onDeleteXiaomi(mi)" *ngIf="!editXiaomiStatus || editXiaomiIndex !== ind"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn btn-warning btn-sm" type="submit" *ngIf="editXiaomiStatus && editXiaomiIndex == ind"><i class="fa-solid fa-floppy-disk"></i></button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<form #ref="ngForm" (ngSubmit)="onSaveSamsung(ref.value)">
+    <button class="float-start">Samsung Data</button>
+    <table class="table text-center">
+        <thead>
+            <th>Model</th>
+            <th>Avl.</th>
+            <th>Description</th>
+            <th>Image</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let van of samsung| search:searchTerm;let ind = index" data-aos="fade-up">
+                <td>
+                    <span *ngIf="!editSamsungStatus || editSamsungIndex !== ind">
+                        {{van.productTitle}}
+                    </span>
+                    <span *ngIf="editSamsungStatus && editSamsungIndex == ind">
+                        <input type="text" name="productTitle" [(ngModel)]="editSamsungObj.productTitle">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editSamsungStatus || editSamsungIndex !== ind">
+                        {{van.available}}
+                    </span>
+                    <span *ngIf="editSamsungStatus && editSamsungIndex == ind">
+                        <input type="text" name="available" [(ngModel)]="editSamsungObj.available">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editSamsungStatus || editSamsungIndex !== ind">
+                        {{van.description}}
+                    </span>
+                    <span *ngIf="editSamsungStatus && editSamsungIndex == ind">
+                        <input type="text" name="description" [(ngModel)]="editSamsungObj.description">
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="!editSamsungStatus || editSamsungIndex !== ind">
+                        <img src={{van.productImage}} width="150">
+                    </span>
+                    <span *ngIf="editSamsungStatus && editSamsungIndex == ind">
+                        <input type="text" name="productImage" [(ngModel)]="editSamsungObj.productImage">
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        <button class="btn btn-warning btn-sm" type="button" (click)="editSamsung(van,ind)" *ngIf="!editSamsungStatus || editSamsungIndex !== ind"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-warning btn-sm" type="button" (click)="onDeleteSamsung(van)" *ngIf="!editSamsungStatus || editSamsungIndex !== ind"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn btn-warning btn-sm" type="submit" *ngIf="editSamsungStatus && editSamsungIndex == ind"><i class="fa-solid fa-floppy-disk"></i></button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+

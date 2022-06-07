@@ -1,0 +1,35 @@
+th{
+    padding: 20px;
+    color: #F0AD4E;
+    font-weight: 900;
+}
+th:hover{
+    color:black;
+}
+table{
+    margin-top: 20px;
+    background-color: white;
+    color:black
+}
+button{
+    border-radius: 10px;
+    background-color:#F0AD4E;
+    margin: 5px;
+    color:white;
+}
+button:hover{
+    color:black;
+}
+input{
+    width:100%;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.mk{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.mk input{
+    text-align: center;
+    font-style: italic;
+}

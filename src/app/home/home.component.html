@@ -1,0 +1,39 @@
+
+<div class="container more">
+  <div class="ribbon ribbon-sm text-vertical">
+
+  <marquee direction="up" scrollamount="5" behavior="alternate"><h2 class="text-center text-light"><i class="fa-solid fa-face-grin-stars text-warning"></i> Today's Offer Zone <i class="fa-solid fa-face-grin-stars text-warning"></i></h2></marquee></div>
+<div class="container row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-5 m-5 extra" style="padding-left: 0px;">
+  <div class="card bg-dark text-light cd ml-5" data-aos="fade-down-right" (click)="iphonebannerClick()">
+    <img class="card-img-top prodimg" src="https://m.media-amazon.com/images/I/71QE00iB9IL._SX679_.jpg" alt="Card image cap">
+    <div class="ribbon-bookmark-v ribbon-sm text-vertical dk"><i>Clearance Sale!</i></div>
+    <div class="card-body">
+      <h5 class="card-title">Apple iPhone 11 (64GB) - White</h5>
+      <p class="card-text">M.R.P.:₹45,900.00. Inclusive of all taxes EMI starts at ₹2,161. No Cost EMI available.Lowest Cost till date.</p>
+      <button type="button"  class="btn btn-warning" (click)="grabnow()"> Grab Now</button>
+    </div>
+  </div>
+  <div class="card bg-dark text-light cd mk" data-aos="zoom-in-right" (click)="samsungbannerClick()">
+    <img class="card-img-top prodimg" src="https://m.media-amazon.com/images/I/8131pwAojZL._SX569_.jpg" alt="Card image cap">
+    <div class="ribbon-bookmark-v ribbon-sm text-vertical"><i>Discount(27% Off) :)</i></div>
+    <div class="card-body">
+      <h5 class="card-title">Samsung GalaxyS21FE 5G (Lavender,8GB, 128GB)</h5>
+      <p class="card-text">-27% ₹54,999.00 M.R.P.:₹74,999.00 .Inclusive of all taxes.EMI starts at ₹2,589. No cost EMI.</p>
+      <button type="button" class="btn btn-warning" (click)="grabnow()"> Grab Now</button>
+    </div>
+  </div>
+  <div class="card bg-dark text-light cd" data-aos="zoom-in-left" (click)="xiaomibannerClick()">
+    <img class="card-img-top prodimg" src="https://m.media-amazon.com/images/I/71lYm08fIZL._SX569_.jpg" alt="Card image cap">
+    <div class="ribbon-bookmark-v ribbon-sm text-vertical tb"><i>New Arrival !!!</i></div>
+    <div class="card-body">
+      <h5 class="card-title">Xiaomi 12 Pro | 5G (Opera Mauve, 12GB, 256GB)</h5>
+      <p class="card-text">M.R.P.:₹66,999.00.Inclusive of all taxes EMI starts at ₹3,154.No Cost EMI available</p>
+      <button type="button" class="btn btn-warning" (click)="grabnow()"> Grab Now</button>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container text-center">
+  <pagination-controls (pageChange)="p=$event">1</pagination-controls>
+</div>
+
