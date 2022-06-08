@@ -161,3 +161,6 @@ span{
   input{
       border-radius: 10px;
   }
+  .cmt{
+    text-align: right;
+  }
