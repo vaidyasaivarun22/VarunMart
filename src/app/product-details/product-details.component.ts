@@ -110,12 +110,15 @@ export class ProductDetailsComponent {
 
       this.usObj.sendProductToUserCart(newUserProductObj).subscribe(
         res=>{
-          alert(res.message);
+          if(res.message !== "New product Added")
+          {
+            alert(res.message);
+          }
           this.usObj.updateDataObservable(res.latestCartObject);
         },
         err=>{
           console.log("Err in posting product to cart",err.message);
-          alert("Product Added To Cart Successfully !!!");
+          // alert("Product Added To Cart Successfully !!!");
         }
       )
     }
@@ -134,7 +137,7 @@ export class ProductDetailsComponent {
       res=>{
         if(res.message==="Product Removed successfully")
         {
-          alert("Product Removed from cart Successfully");
+          // alert("Product Removed from cart Successfully");
           this.usObj.updateDataObservable(res.latestCartObject);
         }      
         else{
@@ -144,7 +147,7 @@ export class ProductDetailsComponent {
       err=>{
         if(err.message.startsWith("Http failure during parsing"))
         {
-          alert("Product Removed from cart Successfully");
+          // alert("Product Removed from cart Successfully");
         }
         else
         {

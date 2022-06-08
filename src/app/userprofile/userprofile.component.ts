@@ -95,7 +95,7 @@ export class UserprofileComponent implements OnInit {
         if(res.message==="Product Removed successfully")
         {
           this.usObj.updateDataObservable(res.latestCartObject);
-          alert("Product Removed from cart Successfully");
+          // alert("Product Removed from cart Successfully");
           this.router.navigateByUrl('products');
         }      
         else{
@@ -105,7 +105,7 @@ export class UserprofileComponent implements OnInit {
       err=>{
         if(err.message.startsWith("Http failure during parsing"))
         {
-          alert("Product Removed from cart Successfully");
+          // alert("Product Removed from cart Successfully");
           this.router.navigateByUrl('products');
         }
         else
