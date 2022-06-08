@@ -30,6 +30,9 @@
       .ribbon{
           padding-right: 0px;
       }
+      .extra1{
+          transform: translate(8%,0);
+      }
 }
 @media screen and (min-width:992px){
     .prodimg{

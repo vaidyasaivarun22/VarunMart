@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../administrator/admin.service';
 import { DataService } from '../data.service';
 import { InsidecardService } from '../insidecard.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-description',
@@ -12,11 +13,16 @@ import { InsidecardService } from '../insidecard.service';
 export class DescriptionComponent implements OnInit {
   postObj!:any;
   loginStatus:boolean = false;
+  userObj:any;
   OverAllRating:number = 5;
-  constructor(private ar:ActivatedRoute,private ic:InsidecardService,public dsObj:DataService,private router:Router,private asObj:AdminService) {
+  constructor(private ar:ActivatedRoute,private ic:InsidecardService,public dsObj:DataService,private router:Router,private asObj:AdminService,private usObj:UserService) {
   }
   
   ngOnInit(): void {
+
+    this.userObj = localStorage.getItem("userObj");
+    this.userObj = JSON.parse(this.userObj);
+
     let descObj = this.ar.snapshot.params[`dscObj`];
     const arr = descObj.split(" ");
     //get data of card which has id as above ..
@@ -75,4 +81,5 @@ export class DescriptionComponent implements OnInit {
   {
     window.location.href = `${imageObj}`;
   }
+  
 }

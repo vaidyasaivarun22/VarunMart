@@ -4,19 +4,19 @@
     </tr>
     <tr>
         <th><h5>Mobile Model</h5></th>
-        <td><h5>{{postObj.productTitle}}</h5></td>
+        <td>{{postObj.productTitle}}</td>
     </tr>
     <tr>
         <th><h5>Mobile Description</h5></th>
-        <td><h5>{{postObj.description}}</h5></td>
+        <td>{{postObj.description}}</td>
     </tr>
     <tr>
         <th><h5>Mobile Image</h5></th>
-        <td><img [src]=postObj.productImage (click)="openImg(postObj.productImage)"></td>    
+        <td><img [src]=postObj.productImage class="mbImg" (click)="openImg(postObj.productImage)"></td>    
     </tr>
     <tr>
         <th><h5>Mobile Price</h5></th>
-        <td><h5>&#8377;&nbsp;{{postObj.price}}</h5></td>    
+        <td>&#8377;&nbsp;{{postObj.price}}</td>    
     </tr>
 </table>
 <div class="container">
@@ -88,8 +88,21 @@
     </div>
     <form #ref="ngForm" (ngSubmit)="userRated(ref)">
         <span>Post your Rating &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <input (click)="checkLogin()" name="posted" class="mt-3" type="number" min="1" max="5" ngModel>
+        <span><input (click)="checkLogin()" name="posted" class="mt-3" type="number" min="1" max="5" ngModel></span>
         <span class="m-3"><button type="submit" class="btn btn-warning btn-sm mb-1" (click)="checkLogin()" [disabled]="!loginStatus"> Rate</button></span>
+    </form>
+</div>
+<div class="container mt-3 bg-light">
+    <h3 style="color: crimson;" class="text-center"><b>Comments</b></h3>
+    <form>
+        <div>
+            <span class="m-3"><img src={{userObj.profileImage}} height="50px" width="auto" style="border-radius: 50%;"></span>
+            <span>{{userObj.username}}</span>
+        </div>
+        <div class="mb-3">
+            <span><input type="text" class="text-line" id="pt" placeholder="comment..." name="comment"></span>
+            <span><button type="button" class="btn btn-warning btn-sm m-2" >Post</button></span>
+        </div>
     </form>
 </div>
 
