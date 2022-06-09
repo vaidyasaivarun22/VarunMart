@@ -9,6 +9,8 @@ const multer = require('multer');
 const { CloudinaryStorage }=require('multer-storage-cloudinary');
 const { async } = require('rxjs');
 const expressAsyncHandler = require('express-async-handler');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // configure cloudinary
 cloudinary.config({
@@ -32,6 +34,7 @@ const multerObj = new multer({
 })
 
 // -------------------------------------------------------------------------------------------------------------
+let count=0;
 // Creating a parser for converson to json content
 userApi.use(exp.json());
 
@@ -196,6 +199,7 @@ userApi.get('/getproducts/:username',ExpressErrorHandler(async(req,res,next)=>{
     else
     {
         res.send({message:userProdObj});
+        this.count=userProdObj.products.length;
     }
 }))
 
@@ -234,4 +238,41 @@ userApi.put('/empty-cart/:username',ExpressErrorHandler(async(req,res)=>{
         res.send({message:"user doesn't exists..."});
     }
 }))
+
+// ------------------------------------------------------
+// sending mail to the user after successfull checkout 
+userApi.post('/send-mail/:useremail',ExpressErrorHandler(async(req,res)=>{
+
+    let userObj = req.body;
+    let usermail = req.params.useremail;
+
+
+    const transporter = nodemailer.createTransport({
+        service:"hotmail",
+        auth:{
+            user:process.env.MAIL_SENDER,
+            pass:process.env.VARUNMARTPASSWORD
+        }
+    });
+
+    const options ={
+        from:process.env.MAIL_SENDER,
+        to:usermail,
+        subject:"Regarding Recent Purchases confirmation at VarunMart",
+        html:`<span>Hey </span><span style="color:blue">${userObj.name},</span><br><br>We are so thankful to you for making ${this.count} purchase/purchases of total cost of &#8377; ${userObj.cost} at VarunMart...Hoping our services are really helpfull to you and making your life easier :) <br><br>&nbsp;&nbsp;-Thankyou...visit Again!!! <br><br><h3 style="text-align:right;color:blue">@VarunMart</h3>`
+    };
+
+    transporter.sendMail(options,function(err,info){
+        if(err)
+        {
+            res.send({message:"some error occured"});
+        }
+        else{
+            res.send({message:info.response});
+        }
+    })
+
+}))
+
+
 module.exports=userApi;

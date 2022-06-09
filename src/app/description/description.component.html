@@ -94,14 +94,17 @@
 </div>
 <div class="container mt-3 bg-light">
     <h3 style="color: crimson;" class="text-center"><b>Comments</b></h3>
-    <form>
+    <div class="container">
+
+    </div>
+    <form #ref="ngForm" (ngSubmit)="onCommentPost(ref.value)">
         <div>
             <span class="m-3"><img src={{userObj.profileImage}} height="50px" width="auto" style="border-radius: 50%;"></span>
             <span>{{userObj.username}}</span>
         </div>
         <div class="mb-3">
-            <span><input type="text" class="text-line" id="pt" placeholder="comment..." name="comment"></span>
-            <span><button type="reset" class="btn btn-warning btn-sm m-2 cmt" >Post</button></span>
+            <span><input type="text" class="text-line" placeholder="comment..." name="comment" ngModel></span>
+            <span><button type="submit" class="btn btn-warning btn-sm m-2 cmt" >Post</button></span>
         </div>
     </form>
 </div>

@@ -77,6 +77,7 @@ productApi.get(`/get-iphone/:id`,expressErrorHandler(async(req,res,next)=>{
     }
 }))
 
+
 // --------------------------------------------------------------------------------------------------
 // For Samsung 
 // Adding new samsung mobile

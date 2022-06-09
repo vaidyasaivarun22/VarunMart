@@ -62,4 +62,10 @@ export class UserService {
   {
     return this.hc.put(`/users/empty-cart/${username}`,username);
   }
+
+  // ----------------------------------------------------------------------
+  sendMailAfterCheckout(useremail:any,prodObj:any)
+  {
+    return this.hc.post(`/users/send-mail/${useremail}`,prodObj);
+  }
 }

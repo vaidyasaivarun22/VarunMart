@@ -29,5 +29,5 @@
             </tbody>
         </table>
         <img src="../../assets/cartsad.svg" *ngIf="!cartTotal" class="text-center mb-5 sad">
-       <button type="button" class="btn-warning checkout" (click)="checkout(userObj.username)"  *ngIf="cartTotal" ><h3><img src="../../assets/smiley.gif" width="50px"> CHECKOUT</h3></button>
+       <button type="button" class="btn-warning checkout" (click)="checkout(userObj.username);sendMail(userObj.email,cartTotal,userObj.username)"  *ngIf="cartTotal" ><h3><img src="../../assets/smiley.gif" width="50px"> CHECKOUT</h3></button>
 </div>

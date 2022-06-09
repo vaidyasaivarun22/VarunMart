@@ -160,4 +160,19 @@ export class UserprofileComponent implements OnInit {
     }
   }
 
+  // sending mail to the user after checkout
+  sendMail(useremail:any,totcost:any,username:any)
+  {
+    const mailObj = {count:this.count,cost:totcost,name:username};
+    this.usObj.sendMailAfterCheckout(useremail,mailObj).subscribe(
+      res=>{
+        console.log("Email sent check your mail in spam folder");
+      },
+      err=>{
+        console.log("Error in sending cart products mail is ",err);
+        alert("Some Error Occured !!!"+err.message);
+      }
+    )
+  }
+
 }

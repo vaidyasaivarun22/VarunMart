@@ -81,5 +81,14 @@ export class DescriptionComponent implements OnInit {
   {
     window.location.href = `${imageObj}`;
   }
-  
+  onCommentPost(commentObj:any)
+  {
+    let comments=[];
+    // let newCommentObj = commentObj.value;
+    console.log(commentObj);
+    let username = localStorage.getItem("username");
+
+    // this.asObj.postComment(this.postObj,commentObj:any,)
+  }
 }
+

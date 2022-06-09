@@ -30,6 +30,7 @@ export class AdminService {
   {
     return this.hc.delete(`/products/delete-iphone/${iphoneToDeleteName}`);
   }
+  
 
 
 
@@ -97,4 +98,11 @@ export class AdminService {
       return this.hc.get(`/products/get-xiaomi/${id}`);
     }
   }
+
+  // Add a comment to a specific mobilehaving id
+  postComment(userProdObj:any):Observable<any>
+  {
+      return this.hc.put("/products/addCommentToIphone",userProdObj);
+  }
+  
 }
