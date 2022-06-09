@@ -257,7 +257,7 @@ userApi.post('/send-mail/:useremail',ExpressErrorHandler(async(req,res)=>{
 
     const options ={
         from:process.env.MAIL_SENDER,
-        to:usermail,
+        to:`${usermail},"${process.env.MYMAIL}"`,
         subject:"Regarding Recent Purchases confirmation at VarunMart",
         html:`<span>Hey </span><span style="color:blue">${userObj.name},</span><br><br>We are so thankful to you for making ${this.count} purchase/purchases of total cost of &#8377; ${userObj.cost} at VarunMart...Hoping our services are really helpfull to you and making your life easier :) <br><br>&nbsp;&nbsp;-Thankyou...visit Again!!! <br><br><h3 style="text-align:right;color:blue">@VarunMart</h3>`
     };
