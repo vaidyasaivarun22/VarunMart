@@ -77,10 +77,45 @@ productApi.get(`/get-iphone/:id`,expressErrorHandler(async(req,res,next)=>{
     }
 }))
 
+// 6.Adding comments to iphone
+productApi.put(`/addComment-iphone/:id`,expressErrorHandler(async(req,res,next)=>{
+    let iphoneCollectionObj = req.app.get("iphoneCollectionObj");
+    let id = req.params.id;
+    
+    let CommentObj = req.body;
+    let iphoneObj = await iphoneCollectionObj.findOne({"_id":ObjectId(id)});
+    if(iphoneObj.comments === undefined)
+    {
+        // create a new comments array to add to iphone collection.
+        comments = [];
+        let newCommentObj = {username:CommentObj.username,comment:CommentObj.comment,profileImage:CommentObj.profileImage};
+        comments.push(newCommentObj);
+        await iphoneCollectionObj.updateOne({"_id":ObjectId(id)},{$set:{...iphoneObj,comments}});
+        res.send({message:"New comment added"});
+    }
+    else
+    {
+        iphoneObj.comments.push(CommentObj);
+        let comments = iphoneObj.comments;
+        // updating after adding the new comment to the collection
+        await iphoneCollectionObj.updateOne({"_id":ObjectId(id)},{$set:{...iphoneObj,comments:comments}});
+        res.send({message:"New comment added"});
+    }
+}))
+
+// 7.Deleting a specific comment of a user from a specific product
+productApi.put(`/deleteComment-iphone/:id`,expressErrorHandler(async(req,res)=>{
+    let iphoneCollectionObj = req.app.get("iphoneCollectionObj");
+    let id = req.params.id;
+    let username = req.body.username;
+    await iphoneCollectionObj.updateOne({"_id":ObjectId(id)},{$pull:{comments:{username:username}}});
+    res.send({message:"comment deleted"});
+}))
+
 
 // --------------------------------------------------------------------------------------------------
 // For Samsung 
-// Adding new samsung mobile
+// 1.Adding new samsung mobile
 productApi.post('/add-samsung',expressErrorHandler(async(req,res,next)=>{
 
     let samsungCollectionObj = req.app.get('samsungCollectionObj');
@@ -98,14 +133,14 @@ productApi.post('/add-samsung',expressErrorHandler(async(req,res,next)=>{
     }
 }))
 
-// Read all samsung data
+// 2.Read all samsung data
 productApi.get('/get-samsung',expressErrorHandler(async(req,res,next)=>{
     let samsungCollectionObj = req.app.get("samsungCollectionObj");
     let samsungArray = await samsungCollectionObj.find().toArray();
     res.send({message:samsungArray});
 }))
 
-// Updating existing Samsung's data
+// 3.Updating existing Samsung's data
 productApi.put('/update-samsung',expressErrorHandler(async(req,res,next)=>{
     let samsungCollectionObj = req.app.get("samsungCollectionObj");
     let updatedSamsungObj = req.body;
@@ -153,9 +188,44 @@ productApi.get(`/get-samsung/:id`,expressErrorHandler(async(req,res,next)=>{
     }
 }))
 
+// 6.Adding comments to samsung
+productApi.put(`/addComment-samsung/:id`,expressErrorHandler(async(req,res,next)=>{
+    let samsungCollectionObj = req.app.get("samsungCollectionObj");
+    let id = req.params.id;
+    
+    let CommentObj = req.body;
+    let samsungObj = await samsungCollectionObj.findOne({"_id":ObjectId(id)});
+    if(samsungObj.comments === undefined)
+    {
+        // create a new comments array to add to iphone collection.
+        comments = [];
+        let newCommentObj = {username:CommentObj.username,comment:CommentObj.comment,profileImage:CommentObj.profileImage};
+        comments.push(newCommentObj);
+        await samsungCollectionObj.updateOne({"_id":ObjectId(id)},{$set:{...samsungObj,comments}});
+        res.send({message:"New comment added"});
+    }
+    else
+    {
+        samsungObj.comments.push(CommentObj);
+        let comments = samsungObj.comments;
+        // updating after adding the new comment to the collection
+        await samsungCollectionObj.updateOne({"_id":ObjectId(id)},{$set:{...samsungObj,comments:comments}});
+        res.send({message:"New comment added"});
+    }
+}))
+
+// 7.Deleting a specific comment of a user from a specific product
+productApi.put(`/deleteComment-samsung/:id`,expressErrorHandler(async(req,res)=>{
+    let samsungCollectionObj = req.app.get("samsungCollectionObj");
+    let id = req.params.id;
+    let username = req.body.username;
+    await samsungCollectionObj.updateOne({"_id":ObjectId(id)},{$pull:{comments:{username:username}}});
+    res.send({message:"comment deleted"});
+}))
+
 // ----------------------------------------------------------------------------------------------------
 // For Xiaomi
-// Adding new Xiaomi mobile
+// 1.Adding new Xiaomi mobile
 productApi.post('/add-xiaomi',expressErrorHandler(async (req,res,next)=>{
 
     let xiaomiCollectionObj = req.app.get('xiaomiCollectionObj');
@@ -173,14 +243,14 @@ productApi.post('/add-xiaomi',expressErrorHandler(async (req,res,next)=>{
     }
 }))
 
-// Read all xiaomi data
+// 2.Read all xiaomi data
 productApi.get('/get-xiaomi',expressErrorHandler(async(req,res,next)=>{
     let xiaomiCollectionObj = req.app.get("xiaomiCollectionObj");
     let xiaomiArray = await xiaomiCollectionObj.find().toArray();
     res.send({message:xiaomiArray});
 }))
 
-// Updating existing Samsung's data
+// 3.Updating existing Samsung's data
 productApi.put('/update-xiaomi',expressErrorHandler(async(req,res,next)=>{
     let xiaomiCollectionObj = req.app.get("xiaomiCollectionObj");
     let updatedxiaomiObj = req.body;
@@ -227,5 +297,41 @@ productApi.get(`/get-xiaomi/:id`,expressErrorHandler(async(req,res,next)=>{
         res.send({message:searchObj});
     }
 }))
+
+// 6.Adding comments to xiaomi
+productApi.put(`/addComment-xiaomi/:id`,expressErrorHandler(async(req,res,next)=>{
+    let xiaomiCollectionObj = req.app.get("xiaomiCollectionObj");
+    let id = req.params.id;
+    
+    let CommentObj = req.body;
+    let xiaomiObj = await xiaomiCollectionObj.findOne({"_id":ObjectId(id)});
+    if(xiaomiObj.comments === undefined)
+    {
+        // create a new comments array to add to iphone collection.
+        comments = [];
+        let newCommentObj = {username:CommentObj.username,comment:CommentObj.comment,profileImage:CommentObj.profileImage};
+        comments.push(newCommentObj);
+        await xiaomiCollectionObj.updateOne({"_id":ObjectId(id)},{$set:{...xiaomiObj,comments}});
+        res.send({message:"New comment added"});
+    }
+    else
+    {
+        xiaomiObj.comments.push(CommentObj);
+        let comments = xiaomiObj.comments;
+        // updating after adding the new comment to the collection
+        await xiaomiCollectionObj.updateOne({"_id":ObjectId(id)},{$set:{...xiaomiObj,comments:comments}});
+       res.send({message:"New comment added"});
+    }
+}))
+
+// 7.Deleting a specific comment of a user from a specific product
+productApi.put(`/deleteComment-xiaomi/:id`,expressErrorHandler(async(req,res)=>{
+    let xiaomiCollectionObj = req.app.get("xiaomiCollectionObj");
+    let id = req.params.id;
+    let username = req.body.username;
+    await xiaomiCollectionObj.updateOne({"_id":ObjectId(id)},{$pull:{comments:{username:username}}});
+    res.send({message:"comment deleted"});
+}))
+
 
 module.exports=productApi;

@@ -4,7 +4,7 @@
     background-image: url('../../assets/crackers.gif');
     background-repeat: repeat-x;
     border-radius: 10px;
-    margin-left: 100px;
+    margin-left:70px;
 }
 .cd:hover{
     box-shadow: -5px 5px black;
@@ -31,7 +31,7 @@
           padding-right: 0px;
       }
       .extra1{
-          transform: translate(8%,0);
+          transform: translate(1%,0);
       }
 }
 @media screen and (min-width:992px){

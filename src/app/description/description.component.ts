@@ -15,6 +15,11 @@ export class DescriptionComponent implements OnInit {
   loginStatus:boolean = false;
   userObj:any;
   OverAllRating:number = 5;
+  count1star:number = 20;
+  count2star:number = 6;
+  count3star:number = 15;
+  count4star:number = 63;
+  count5star:number = 150; 
   constructor(private ar:ActivatedRoute,private ic:InsidecardService,public dsObj:DataService,private router:Router,private asObj:AdminService,private usObj:UserService) {
   }
   
@@ -54,21 +59,53 @@ export class DescriptionComponent implements OnInit {
   }
   countRating:number=254;
   ratingStatus:boolean=false;
-  userRated(userRating:any)
+  userRated(userRating:any,prodObj:any,userObj:any)
   {
+
     let rating = userRating.value;
-    if(rating.posted > 5 || rating.posted < 1)
+    if(rating.comment)
+    {
+      let username = localStorage.getItem("username");
+      let commentObj = {username:username,comment:rating.comment,profileImage:userObj.profileImage};
+      this.asObj.postComment(commentObj,prodObj).subscribe(
+        res=>{
+          alert("Comment Added");
+          this.router.navigateByUrl('products');
+        },
+        err=>{
+          console.log('error in commenting is:'+err.message);
+        }
+      )
+    }
+    else if(rating.posted > 5 || rating.posted < 1)
     {
       alert("Rate only between 1 and 5");
     }
     else{
-      if(rating.posted <= 4)
+      if(rating.posted === 4)
       {
         this.OverAllRating = 4;
+        this.count4star++;
+      }
+      else if(rating.posted === 3)
+      {
+        this.OverAllRating = 4;
+        this.count3star++;
+      }
+      else if(rating.posted === 2)
+      {
+        this.OverAllRating = 4;
+        this.count2star++;
+      }
+      else if(rating.posted === 1)
+      {
+        this.OverAllRating = 4;
+        this.count1star++;
       }
       else
       {
         this.OverAllRating = 4.2;
+        this.count5star++;
       }
       this.ratingStatus=true;
       this.loginStatus = false;
@@ -81,14 +118,21 @@ export class DescriptionComponent implements OnInit {
   {
     window.location.href = `${imageObj}`;
   }
-  onCommentPost(commentObj:any)
-  {
-    let comments=[];
-    // let newCommentObj = commentObj.value;
-    console.log(commentObj);
-    let username = localStorage.getItem("username");
 
-    // this.asObj.postComment(this.postObj,commentObj:any,)
+  deleteMyComment(username:any,prodObj:any)
+  {
+    this.asObj.deleteComment(username,prodObj).subscribe(
+      res=>{
+        if(res.message === "comment deleted")
+        {
+          alert("Comment Deleted successfully");
+          this.router.navigateByUrl('products');
+        }
+      },
+      err=>{
+        console.log('error in deleting comment is:'+err.message);
+      }
+    )
   }
 }
 

@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="side right">
-        <div>150</div>
+        <div>{{count5star}}</div>
     </div>
     <div class="side">
         <div>4 star</div>
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="side right">
-        <div>63</div>
+        <div>{{count4star}}</div>
     </div>
     <div class="side">
         <div>3 star</div>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="side right">
-        <div>15</div>
+        <div>{{count3star}}</div>
     </div>
     <div class="side">
         <div>2 star</div>
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="side right">
-        <div>6</div>
+        <div>{{count2star}}</div>
     </div>
     <div class="side">
         <div>1 star</div>
@@ -83,28 +83,32 @@
         </div>
     </div>
     <div class="side right">
-        <div>20</div>
+        <div>{{count1star}}</div>
     </div>
     </div>
-    <form #ref="ngForm" (ngSubmit)="userRated(ref)">
+    <form #ref="ngForm" name="firstForm" (ngSubmit)="userRated(ref,postObj,userObj)">
         <span>Post u'r Rating &nbsp;&nbsp;&nbsp;</span>
-        <span><input (click)="checkLogin()" name="posted" class="mt-3" type="number" min="1" max="5" ngModel></span>
-        <span class="m-3"><button type="submit" class="btn btn-warning btn-sm mb-1" (click)="checkLogin()" [disabled]="!loginStatus"> Rate</button></span>
-    </form>
-</div>
-<div class="container mt-3 bg-light">
-    <h3 style="color: crimson;" class="text-center"><b>Comments</b></h3>
-    <div class="container">
-
-    </div>
-    <form #ref="ngForm" (ngSubmit)="onCommentPost(ref.value)">
-        <div>
-            <span class="m-3"><img src={{userObj.profileImage}} height="50px" width="auto" style="border-radius: 50%;"></span>
+        <span><input *ngIf="dsObj.userLoginStatus()" name="posted" class="mt-3" type="number" min="1" max="5" ngModel></span>
+        <span class="m-3"><button type="submit" class="btn btn-warning btn-sm mb-1" (click)="checkLogin()" [disabled]="!dsObj.userLoginStatus()"> Rate</button></span>
+    
+        <hr style="color:black">
+        <h3 style="color: crimson;" class="text-center"><b>Comments</b></h3>
+        <h6 *ngIf="!dsObj.userLoginStatus()"><i>Please Login to Comment and view comments...</i></h6>
+        <div *ngIf="dsObj.userLoginStatus()">
+            <div class="container" *ngFor="let comment of postObj.comments">
+                <span class="m-2"><img src={{comment.profileImage}} height="40px" width="auto" style="border-radius: 50%;"></span>
+                <span style="color:dodgerblue;">{{comment.username}}</span>
+                <span class="float-end"><i class="fa-solid fa-trash delcom" (click)="deleteMyComment(comment.username,postObj)" *ngIf="userObj.username == comment.username"></i></span><br>
+                <h6 style="margin-left: 15px;"><b>{{comment.comment}}</b></h6>
+            </div>
+        </div>
+        <div class="mt-5">
+            <span class="m-2"><img src={{userObj.profileImage}} height="50px" width="auto" style="border-radius: 50%;"></span>
             <span>{{userObj.username}}</span>
         </div>
         <div class="mb-3">
-            <span><input type="text" class="text-line" placeholder="comment..." name="comment" ngModel></span>
-            <span><button type="submit" class="btn btn-warning btn-sm m-2 cmt" >Post</button></span>
+            <span><input type="text" class="text-line" placeholder="comment..." name="comment" ngModel *ngIf="dsObj.userLoginStatus()"></span>
+            <span><button type="submit" class="btn btn-warning btn-sm m-2 cmt" *ngIf="dsObj.userLoginStatus()" >Post</button></span>
         </div>
     </form>
 </div>

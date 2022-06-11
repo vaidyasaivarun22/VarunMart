@@ -13,6 +13,7 @@ img{
   border-bottom: solid black 2px;
   padding: 3px 10px;
 }
+
 /* For mobile view */
 @media only screen and (max-width:600px){
     .mbImg{
@@ -26,6 +27,9 @@ img{
       color: crimson;
       font-size: 20px;
       margin-right: 25px;
+    }
+    .delcom{
+      color:crimson;
     }
 }
 /* For tablets */
@@ -43,6 +47,13 @@ img{
       font-size: 20px;
       margin-right: 25px;
     }
+    .delcom{
+      color:crimson;
+    }
+    .delcom:hover{
+      color:black;
+      cursor: pointer;
+    }
 }
 /* for laptops */
 @media screen and (min-width:1000px){
@@ -57,6 +68,13 @@ img{
       color: crimson;
       font-size: 25px;
       margin-right: 25px;
+    }
+    .delcom{
+      color:black;
+    }
+    .delcom:hover{
+      color:crimson;
+      cursor: pointer;
     }
 }
 table,tr,td{

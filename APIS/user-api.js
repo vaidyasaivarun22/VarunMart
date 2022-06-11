@@ -152,6 +152,7 @@ userApi.post('/login',ExpressErrorHandler(async(req,res)=>{
     }
 }))
 // ----------------------------------------------------------------------------------------
+// Adding prooducts in to the user cart.
 userApi.post('/add-to-cart',ExpressErrorHandler(async(req,res,next)=>{
     
     let userCartCollectionObject = req.app.get("userCartCollectionObject");
@@ -202,7 +203,7 @@ userApi.get('/getproducts/:username',ExpressErrorHandler(async(req,res,next)=>{
         this.count=userProdObj.products.length;
     }
 }))
-
+// removing products from the user cart
 userApi.put('/deleteproduct/:productid/',ExpressErrorHandler(async(req,res)=>{
     let userCartCollectionObject = req.app.get("userCartCollectionObject");
     // console.log(req.body.username);

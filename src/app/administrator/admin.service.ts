@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -100,9 +100,38 @@ export class AdminService {
   }
 
   // Add a comment to a specific mobilehaving id
-  postComment(userProdObj:any):Observable<any>
+  postComment(commentObj:any,prodObj:any):Observable<any>
   {
-      return this.hc.put("/products/addCommentToIphone",userProdObj);
+    let prod_id = prodObj._id;
+    if(prodObj.product === "Apple iphone")
+    {
+      return this.hc.put(`/products/addComment-iphone/${prod_id}`,commentObj);
+    }
+    else if(prodObj.product === "samsung mobile")
+    {
+      return this.hc.put(`/products/addComment-samsung/${prod_id}`,commentObj);
+    }
+    else
+    {
+      return this.hc.put(`/products/addComment-xiaomi/${prod_id}`,commentObj);
+    }
   }
-  
+  // delete a comment of a specific user for a specific mobile
+  deleteComment(username:any,prodObj:any):Observable<any>
+  {
+    let prod_id = prodObj._id;
+    let usernameObj = {username:username}
+    if(prodObj.product === "Apple iphone")
+    {
+      return this.hc.put(`/products/deleteComment-iphone/${prod_id}`,usernameObj);
+    }
+    else if(prodObj.product === "samsung mobile")
+    {
+      return this.hc.put(`/products/deleteComment-samsung/${prod_id}`,usernameObj);
+    }
+    else
+    {
+      return this.hc.put(`/products/deleteComment-xiaomi/${prod_id}`,usernameObj);
+    }
+  }
 }
