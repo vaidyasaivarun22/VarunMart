@@ -4,3 +4,8 @@ input{
     font-weight: 900;
     text-align: center; 
 }
+.ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #fff107;
+    cursor: default;
+}
