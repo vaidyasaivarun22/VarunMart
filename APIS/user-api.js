@@ -152,7 +152,7 @@ userApi.post('/login',ExpressErrorHandler(async(req,res)=>{
     }
 }))
 // ----------------------------------------------------------------------------------------
-// Adding prooducts in to the user cart.
+// Adding produucts into the cart of a specific user...
 userApi.post('/add-to-cart',ExpressErrorHandler(async(req,res,next)=>{
     
     let userCartCollectionObject = req.app.get("userCartCollectionObject");
@@ -208,12 +208,30 @@ userApi.put('/deleteproduct/:productid/',ExpressErrorHandler(async(req,res)=>{
     let userCartCollectionObject = req.app.get("userCartCollectionObject");
     // console.log(req.body.username);
     let userCartObj = req.body;
+    let prodObj = userCartObj.productObj;
     let pid = req.params.productid;
     // console.log(userCartObj,pid);
-    let userExist = await userCartCollectionObject.findOne({username:userCartObj.username});
-    if(userExist !==  null)
+    let userExist = await userCartCollectionObject.find({username:userCartObj.username}).toArray();
+    if(userExist !== null)
     {
-       await userCartCollectionObject.updateOne({username:userCartObj.username},{$pull:{products:{"_id":pid}}});
+    //    await userCartCollectionObject.updateOne({username:userCartObj.username},{$pull:{products:{"_id":pid}}});
+    await userCartCollectionObject.updateOne( 
+        { "username": userCartObj.username},
+        [ 
+          { $set: { 
+               "products": {
+                   $let: {
+                       vars: { ix: { $indexOfArray: [ "$products._id", pid ] } },
+                       in: { $concatArrays: [
+                                 { $slice: [ "$products", {$cond:[{$eq:["$$ix",0]},1,0]},{$cond:[{$eq:["$$ix",0]},1,"$$ix"]}] },
+                                 [],
+                                 { $slice: [ "$products", { $add: [ {$cond:[{$eq:["$$ix",0]},2,1]}, "$$ix" ] }, { $size: "$products" } ] }
+                            ]
+                       }
+                  }
+              }
+          }}
+      ])
        // sending latest cartObjects
        let latestCartObject = await userCartCollectionObject.findOne({username:userCartObj.username});
        res.send({message:"Product Removed successfully",latestCartObject:latestCartObject});

@@ -25,11 +25,11 @@ export class ProductDetailsComponent {
 
     sendProductToParent(prObj:any)
     {
-      if(this.count < 1)
+      if(this.count < 5)
       {
         this.count++;
       }
-      if(this.count < 1)
+      if(this.count < 5)
       {
         this.noMoreAdd = false;
         this.noMoreRemove = false;
@@ -132,8 +132,7 @@ export class ProductDetailsComponent {
   removeProductFromCart(productObj:any)
   {
     let username = localStorage.getItem("username");
-    let usernameObj = {username};
-    this.usObj.removeProductsFromCart(usernameObj,productObj._id).subscribe(
+    this.usObj.removeProductsFromCart(username,productObj).subscribe(
       res=>{
         if(res.message==="Product Removed successfully")
         {

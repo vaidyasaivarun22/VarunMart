@@ -89,8 +89,7 @@ export class UserprofileComponent implements OnInit {
 
     // Logic for database operation
     let username = localStorage.getItem("username");
-    let usernameObj = {username};
-    this.usObj.removeProductsFromCart(usernameObj,productObj._id).subscribe(
+    this.usObj.removeProductsFromCart(username,productObj).subscribe(
       res=>{
         if(res.message==="Product Removed successfully")
         {

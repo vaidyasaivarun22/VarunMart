@@ -53,9 +53,10 @@ export class UserService {
     return this.hc.get(`/users/getproducts/${username}`);
   }
   // 3.Remove a specific product from cart upon pressing trash button
-  removeProductsFromCart(usernameObj:any,productId:any):Observable<any>
+  removeProductsFromCart(username:any,productObj:any):Observable<any>
   {
-    return this.hc.put(`/users/deleteproduct/${productId}`,usernameObj);
+    let completeObj = {username:username,productObj:productObj}
+    return this.hc.put(`/users/deleteproduct/${productObj._id}`,completeObj);
   }
   // 4.Empty cart on Checkout
   emptyUserCartOnCheckout(username:any):Observable<any>
