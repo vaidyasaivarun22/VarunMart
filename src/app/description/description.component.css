@@ -1,3 +1,7 @@
+i:hover{
+  transform: scale(2);
+  color: orangered;
+}
 img{
   cursor: pointer;
 }
@@ -161,7 +165,7 @@ span{
   /* Individual bars */
   .bar-5 {width: 60%; height: 18px; background-color: #04AA6D;}
   .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
-  .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+  .bar-3 {width: 10%; height: 18px; background-color: #6C757D;}
   .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
   .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
   

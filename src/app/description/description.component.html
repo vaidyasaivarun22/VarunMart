@@ -31,7 +31,7 @@
 
     <div class="row">
     <div class="side">
-        <div>5 star</div>
+        <div>5 star &nbsp;&nbsp;<i class="fa-solid fa-face-grin-hearts text-success"></i></div>
     </div>
     <div class="middle">
         <div class="bar-container">
@@ -42,7 +42,7 @@
         <div>{{count5star}}</div>
     </div>
     <div class="side">
-        <div>4 star</div>
+        <div>4 star &nbsp;&nbsp;<i class="fa-solid fa-face-kiss-wink-heart text-primary"></i></div>
     </div>
     <div class="middle">
         <div class="bar-container">
@@ -53,7 +53,7 @@
         <div>{{count4star}}</div>
     </div>
     <div class="side">
-        <div>3 star</div>
+        <div>3 star &nbsp;&nbsp;<i class="fa-solid fa-face-smile-beam text-secondary"></i></div>
     </div>
     <div class="middle">
         <div class="bar-container">
@@ -64,7 +64,7 @@
         <div>{{count3star}}</div>
     </div>
     <div class="side">
-        <div>2 star</div>
+        <div>2 star &nbsp;&nbsp;<i class="fa-solid fa-face-frown text-warning"></i></div>
     </div>
     <div class="middle">
         <div class="bar-container">
@@ -75,7 +75,7 @@
         <div>{{count2star}}</div>
     </div>
     <div class="side">
-        <div>1 star</div>
+        <div>1 star &nbsp;&nbsp;<i class="fa-solid fa-face-sad-cry text-danger"></i></div>
     </div>
     <div class="middle">
         <div class="bar-container">
@@ -92,7 +92,7 @@
         <span class="m-3"><button type="submit" class="btn btn-warning btn-sm mb-1" (click)="checkLogin()" [disabled]="!dsObj.userLoginStatus()"> Rate</button></span>
     
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-        <h3 style="color: crimson;" class="text-center"><b>Comments</b></h3>
+        <h3 style="color: crimson;" class="text-center"><b>Comments &nbsp;<i class="fa-solid fa-comment-dots"></i> </b></h3>
         <h6 *ngIf="!dsObj.userLoginStatus()"><i>Please Login to Comment and view comments...</i></h6>
         <div *ngIf="dsObj.userLoginStatus()">
             <div class="container" *ngFor="let comment of postObj.comments">

@@ -32,7 +32,8 @@
         overflow: hidden;
         position: fixed; 
         top: 130px; 
-        right: 60px;
+        right: 50px;
+        z-index: 1;
         border-radius: 10px;
     }  
 }
