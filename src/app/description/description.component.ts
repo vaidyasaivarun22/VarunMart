@@ -67,21 +67,24 @@ export class DescriptionComponent implements OnInit {
     {
       let username = localStorage.getItem("username");
       let commentObj = {username:username,comment:rating.comment,profileImage:userObj.profileImage};
+      userRating.reset();
       this.asObj.postComment(commentObj,prodObj).subscribe(
         res=>{
-          alert("Comment Added");
-          this.router.navigateByUrl('products');
+          this.ngOnInit();
         },
         err=>{
           console.log('error in commenting is:'+err.message);
+          this.ngOnInit();
         }
       )
     }
     else if(rating.posted > 5 || rating.posted < 1)
     {
+      userRating.reset();
       alert("Rate only between 1 and 5");
     }
     else{
+      userRating.reset();
       if(rating.posted === 4)
       {
         this.OverAllRating = 4;
@@ -125,12 +128,15 @@ export class DescriptionComponent implements OnInit {
       res=>{
         if(res.message === "comment deleted")
         {
-          alert("Comment Deleted successfully");
-          this.router.navigateByUrl('products');
+          // alert("Comment Deleted successfully");
+          // this.router.navigateByUrl('products');
+          this.ngOnInit();
         }
       },
       err=>{
         console.log('error in deleting comment is:'+err.message);
+        this.ngOnInit();
+
       }
     )
   }
