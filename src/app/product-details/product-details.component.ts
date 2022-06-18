@@ -61,12 +61,12 @@ export class ProductDetailsComponent {
   }
   onSelectId(dscObj:any)
   {
-      if(dscObj.product === "Apple iphone")
+      if(dscObj.product.startsWith("Apple"))
       {
         let sc = "AppleIphone"+" "+dscObj._id;
         this.router.navigateByUrl('products/iphones/'+sc);
       }
-      else if(dscObj.product === "samsung mobile")
+      else if(dscObj.product.startsWith("samsung"))
       {
         let sc = "samsungMobile"+" "+dscObj._id;
         this.router.navigateByUrl('products/samsung/'+sc);

@@ -152,7 +152,7 @@ userApi.post('/login',ExpressErrorHandler(async(req,res)=>{
     }
 }))
 // ----------------------------------------------------------------------------------------
-// Adding produucts into the cart of a specific user...
+// Adding products into the cart of a specific user...
 userApi.post('/add-to-cart',ExpressErrorHandler(async(req,res,next)=>{
     
     let userCartCollectionObject = req.app.get("userCartCollectionObject");

@@ -56,8 +56,13 @@ app.use((req,res,next)=>{
 
 // error handling middleware...
 app.use((err,req,res,next)=>{
-    console.log("Some error occred",err);
-    res.send({message:`Error Occured is ${err.message}`});
+    // console.log("Some error occred",err);
+    if(err.message.startsWith("Third argument to $slice must be positive"))
+    {
+    res.send({message:`Double Pressed an item to cart.Product Removed Successfully.`});
+    }
+    else
+        res.send({message:`Error Occured is ${err.message}`});
 })
 
 
