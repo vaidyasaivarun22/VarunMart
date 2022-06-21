@@ -20,6 +20,7 @@ export class UserprofileComponent implements OnInit {
 
   ngOnInit(): void {
     
+    
     this.userObj = localStorage.getItem("userObj");
     this.userObj = JSON.parse(this.userObj);
 
@@ -63,6 +64,7 @@ export class UserprofileComponent implements OnInit {
       this.usObj.dataObservable.subscribe(prodObj=>{
         if(prodObj == 0)
         {
+          
           this.count = 0;
         }
         else
@@ -80,6 +82,8 @@ export class UserprofileComponent implements OnInit {
   }
   removeFromCart(productObj:any)
   {
+    var audio = new Audio("../../assets/outOfCartSound.wav");
+    audio.play();
     // Logic for calculating price after removing an item from cart
     let priceInString =  productObj.price;
     const arr = priceInString.split(",");
@@ -117,11 +121,14 @@ export class UserprofileComponent implements OnInit {
   }
   checkout(username:any)
   {
+    var audio = new Audio("../../assets/checkoutSound.wav");
+    audio.play();
     // this.cartTotal = this.cartTotal;
     this.usObj.emptyUserCartOnCheckout(username).subscribe(
       res=>{
         if(res.message == "checkout successfull !!!")
         {
+          
           alert("Thanks for shopping at VarunMart. Purchase confirmation will be shortly noticed via your mail-id :)");
           alert("Have an Ossum Day... Visit Again !!!");
           this.router.navigateByUrl('products');

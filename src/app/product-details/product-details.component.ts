@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 // import { product } from '../models/product_id.model';
 import {TestService} from '../test.service';
 import { UserService } from '../user.service';
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -102,6 +103,8 @@ export class ProductDetailsComponent {
   // product selected by user
   onProductSelect(productObj:any)
   {
+    var audio = new Audio("../../assets/inToCartSound.wav");
+    audio.play();
     if(this.dsObj.userLoginStatus())
     {
       // console.log('1',productObj);
@@ -131,6 +134,8 @@ export class ProductDetailsComponent {
 
   removeProductFromCart(productObj:any)
   {
+    var audio = new Audio("../../assets/outOfCartSound.wav");
+    audio.play();
     let username = localStorage.getItem("username");
     this.usObj.removeProductsFromCart(username,productObj).subscribe(
       res=>{

@@ -60,6 +60,11 @@ export class ProductsComponent implements OnInit{
     {
       this.cartValue = this.tsObj.getCartCount();
       this.router.navigateByUrl('userprofile');
+      if(this.count == 0)
+      {
+        var audio = new Audio("../../assets/emptyCartSound.wav");
+        audio.play();
+      }
     }
     else
     {

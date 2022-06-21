@@ -59,7 +59,7 @@ app.use((err,req,res,next)=>{
     // console.log("Some error occred",err);
     if(err.message.startsWith("Third argument to $slice must be positive"))
     {
-    res.send({message:`Double Pressed an item to cart.Product Removed Successfully.`});
+    res.send({message:`Double Pressed an item to cart. However Product Removed from cart Successfully.`});
     }
     else
         res.send({message:`Error Occured is ${err.message}`});
