@@ -1,5 +1,5 @@
 <div class="container">
-    <input type="text" name="productTitle" placeholder="Enter iphone model to search" class="form-control" mt-5 [(ngModel)]="searchTerm">
+    <input type="text" name="productTitle" placeholder="Enter iphone model to search" class="form-control" mt-5 [(ngModel)]="searchTerm" x-webkit-speech>
 </div>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 m-5" >
     <div class="col" *ngFor="let probj of iphones | search:searchTerm | paginate:{itemsPerPage : 9,currentPage:p}">
