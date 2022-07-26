@@ -140,5 +140,13 @@ export class DescriptionComponent implements OnInit {
       }
     )
   }
+  back()
+  {
+    history.back();
+  }
+  scrollTop()
+  {
+    window.scrollTo(0, 0);
+  }
 }
 

@@ -49,14 +49,14 @@ a{
       width: 18rem;
       border-radius: 10px;
       transition: transform .2s; /* Animation */
-    }
+     }
     .prodimg{
       height: 250px;
     }
     .extra{
       margin-left: 50px;
     } 
-  }
+  } 
   .forlogin{
       background-color: #F0AD4E;
       color:black;
