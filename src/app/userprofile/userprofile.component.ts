@@ -142,7 +142,7 @@ export class UserprofileComponent implements OnInit {
         if(err.message.startsWith("Http failure during parsing"))
         {
           alert("Thanks for shopping. Purchase confirmation will be shortly noticed via your Registered mail");
-          alert("Have an Ossum Day...Visit Again !!!    - VarunMart");
+          alert("Have an Ossum Day...Visit Again !!!    - MobileMart");
           this.router.navigateByUrl('products');
         }
         else
