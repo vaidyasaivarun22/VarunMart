@@ -3,32 +3,37 @@
 <h6 class="text-end extra2"><span class="text-secondary"><b>{{userObj.username}}</b></span>&nbsp;&nbsp;<img class="profileImg" src="{{userObj.profileImage}}" width="100px"><span></span></h6>
 <h6 class="text-end text-primary mb-5 extra2"><i class="fa-solid fa-envelope text-dark"></i> {{userObj.email}}</h6>
 <button type="button" class="btn-warning text-center cart"><h3>Cart <i class="fa-solid fa-cart-arrow-down"></i>  ({{count}})</h3></button>
-<div class="container text-center tbl">
- 
-        <table class="table w-100 mt-5 text-center text-light bg-dark p-5 m-5" >
-            <thead class="extra1 mb-5">
-                <th></th>
-                <th>ITEM</th>
-                <th>PRODUCT NAME</th>
-                <th>PRODUCT IMAGE</th>
-                <th>PRODUCT</th>
-                <th>PRICE</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of usercartObj.products;let ind = index">
-                    <td (click)="removeFromCart(product)"><i class="fa-solid fa-trash-can"></i></td>
-                    <td>{{ind+1}}</td>
-                    <td>{{product.productTitle | uppercase}}</td>
-                    <td><img src={{product.productImage}} width="150px"></td>
-                    <td>{{product.product | uppercase}}</td>
-                    <td>&#8377;&nbsp;{{product.price}}</td>
-                </tr>
-                <tr>
-                    <td colspan="5">TOTAL</td>
-                    <td  style="background-color: #FFC107; color:black;font-weight:900">&#8377;&nbsp;{{cartTotal}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <img src="../../assets/cartsad.svg" *ngIf="!cartTotal" class="text-center mb-5 sad">
-       <button type="button" class="btn-warning checkout" (click)="checkout(userObj.username);sendMail(userObj.email,cartTotal,userObj.username)"  *ngIf="cartTotal" ><h3><img src="../../assets/smiley.gif" width="50px"> CHECKOUT</h3></button>
+<div class="row">
+    <div class="col-md-12">
+        <div class="container text-center tbl">
+                <table class="table w-100 mt-5 text-center text-light bg-dark p-5 m-5" >
+                    <thead class="extra1 mb-5">
+                        <th></th>
+                        <th>ITEM</th>
+                        <th>PRODUCT NAME</th>
+                        <th>PRODUCT IMAGE</th>
+                        <th>PRODUCT</th>
+                        <th>PRICE</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of usercartObj.products;let ind = index">
+                            <td (click)="removeFromCart(product)"><i class="fa-solid fa-trash-can"></i></td>
+                            <td>{{ind+1}}</td>
+                            <td>{{product.productTitle | uppercase}}</td>
+                            <td><img src={{product.productImage}} width="150px"></td>
+                            <td>{{product.product | uppercase}}</td>
+                            <td>&#8377;&nbsp;{{product.price}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">TOTAL</td>
+                            <td  style="background-color: #FFC107; color:black;font-weight:900">&#8377;&nbsp;{{cartTotal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <img src="../../assets/cartsad.svg" *ngIf="!cartTotal" class="text-center mb-5 sad">
+            </div>
+        </div>
+    </div>
+<div class="text-center">
+    <button type="button" class="btn-warning checkout" (click)="checkout(userObj.username);sendMail(userObj.email,cartTotal,userObj.username)"  *ngIf="cartTotal" ><h3><img src="../../assets/smiley.gif" width="50px"> CHECKOUT</h3></button>
 </div>
