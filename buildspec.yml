@@ -20,3 +20,4 @@ phases:
 artifacts:
   files:
     - varunmart.tar.gz
+    - 'appspec.yml'
