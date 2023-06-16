@@ -1,1 +1,24 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt
+permissions:
+  - object: /opt/*
+    pattern: '**'
+    mode: '0755'
+    owner: root
+    group: root
+    type:
+      - file
+      - directory
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
+#   AfterInstall:
+#     - location: scripts/install.sh
+#       timeout: 300
+#       runas: root
 
