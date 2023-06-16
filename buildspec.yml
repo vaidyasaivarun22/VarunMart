@@ -15,10 +15,10 @@ phases:
   post_build:
     commands:
       - echo "Creating the tar file"
-      - tar zcvf varun_mart.tar.gz dist/*
+      - tar zcvf varunmart.tar.gz dist/*
       - echo "Build completed on $(date)"
 artifacts:
   files:
-    - varun_mart.tar.gz
+    - varunmart.tar.gz
     - **/*
     
