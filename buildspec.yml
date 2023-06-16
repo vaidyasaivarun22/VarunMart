@@ -20,5 +20,3 @@ phases:
 artifacts:
   files:
     - varunmart.tar.gz
-    - **/*
-    
