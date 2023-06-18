@@ -14,11 +14,10 @@ permissions:
       - directory
 hooks:
   BeforeInstall:
-    - location: scripts/build/pre_install.sh
+    - location: scripts/BeforeInstall.sh
       timeout: 300
       runas: root
 #   AfterInstall:
 #     - location: scripts/install.sh
 #       timeout: 300
 #       runas: root
-
