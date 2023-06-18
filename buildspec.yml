@@ -21,3 +21,4 @@ artifacts:
   files:
     - varunmart.tar.gz
     - 'appspec.yml'
+    - scripts/*
