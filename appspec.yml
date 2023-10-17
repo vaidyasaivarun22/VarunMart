@@ -12,11 +12,11 @@ permissions:
     type:
       - file
       - directory
-hooks:
-  BeforeInstall:
-    - location: scripts/BeforeInstall.sh
-      timeout: 300
-      runas: root
+# hooks:
+#   BeforeInstall:
+#     - location: scripts/BeforeInstall.sh
+#       timeout: 300
+#       runas: root
 #   AfterInstall:
 #     - location: scripts/install.sh
 #       timeout: 300
